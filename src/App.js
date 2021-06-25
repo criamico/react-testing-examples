@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import FetchData from './components/FetchData';
+import CheckList from './components/CheckList';
+import Form from './components/Form';
+import Navigation from './components/Navigation';
+import styled from 'styled-components';
+const MAX_PAGES = 3;
+
+const StyledDiv = styled.div`
+  margin: 20px;
+`
 
 function App() {
+  const [ page, setPage ] = useState(0);
+
+  const selectPage = () => {
+    if (page === 0)
+      return <Form />;
+    else if (page === 1)
+      return <FetchData />;
+    else if (page === 2)
+      return <CheckList />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navigation page={page} setPage={setPage} max={MAX_PAGES}/>
+      <StyledDiv className="App">
+        { selectPage() }
+      </StyledDiv>
+    </>
   );
 }
 
