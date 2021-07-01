@@ -13,20 +13,17 @@ const StyledDiv = styled.div`
 function App() {
   const [ page, setPage ] = useState(0);
 
-  const selectPage = () => {
-    if (page === 0)
-      return <Form />;
-    else if (page === 1)
-      return <FetchData />;
-    else if (page === 2)
-      return <CheckList />;
-  }
+  const comps = [
+    <Form />,
+    <CheckList />,
+    <FetchData />
+  ];
 
   return (
     <>
       <Navigation page={page} setPage={setPage} max={MAX_PAGES}/>
       <StyledDiv className="App">
-        { selectPage() }
+        { comps[page] }
       </StyledDiv>
     </>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, act } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import FetchData from '../FetchData';
 
 describe("FetchData", () => {
@@ -8,11 +8,10 @@ describe("FetchData", () => {
   });
 
   describe("Mock API request", () => {
-
     beforeEach(() => {
       global.fetch = jest.fn(() =>
         Promise.resolve({
-          json: () => Promise.resolve({ data: { id: "EUR", name: "Euro" } }),
+          json: () => Promise.resolve({ data: [{ id: "EUR", name: "Euro" }] }),
         })
       );
       fetch.mockClear();
@@ -22,7 +21,7 @@ describe("FetchData", () => {
       global.fetch.mockRestore();
     });
 
-    it("Checks that the fetch function was called", async () => {
+    it("Check that the fetch function was called", async () => {
       // screen.debug();
       expect(screen.getByText("Loading..")).toBeInTheDocument();
 

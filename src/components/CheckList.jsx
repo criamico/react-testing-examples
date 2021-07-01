@@ -12,7 +12,7 @@ const CheckList = () => {
 
   return (
     <div>
-      <h2>3. Async CheckList</h2>
+      <h2>2. Async CheckList</h2>
       <input type="checkbox" onChange={handleCheck} id="check-box" data-testid="check-box"/>
       <label htmlFor="check-box">{isChecked.toString()}</label>
     </div>

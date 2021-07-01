@@ -9,10 +9,7 @@ const FetchData = () => {
       setTimeout(() => {
         fetch('https://api.coinbase.com/v2/currencies')
           .then(response => {
-            if (response.ok) {
-              return response.json()
-            }
-            throw response;
+            return response.json()
           })
           .then(data => {
             setData(data.data);
@@ -29,7 +26,7 @@ const FetchData = () => {
   return (
     <>
       <h1>
-        2. Fetch world currencies
+        3. Fetch world currencies
       </h1>
       <ul>
         {data.map((v) => <Item currency={v} key={v.id}/> )}

@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import Checklist from '../CheckList';
 
-describe("CheckList test #1", () => {
+describe("CheckList Async test", () => {
   beforeAll(() => {
     jest.useFakeTimers();
   })
@@ -11,11 +11,10 @@ describe("CheckList test #1", () => {
     jest.useRealTimers();
   })
 
-  it("Updates state with delay, test with act() + mock timers", async() => {
+  it("use act() and mock timers", async () => {
     act(() => {
       render(<Checklist />);
     })
-
     // screen.debug();
 
     const label = await screen.findByLabelText("false")
@@ -31,12 +30,11 @@ describe("CheckList test #1", () => {
   });
 });
 
-describe("CheckList #2", () => {
-
-  it("Test with Async utilitities", async () => {
+describe("CheckList Async test #2", () => {
+  it("use findBy query and passing a timeout", async () => {
     render(<Checklist />);
 
-    screen.debug();
+    // screen.debug();
 
     const label = screen.getByLabelText("false")
     expect(label).toBeInTheDocument();

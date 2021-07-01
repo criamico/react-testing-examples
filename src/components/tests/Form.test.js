@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, act, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Form from '../Form';
 
 describe("Form", () => {
@@ -33,9 +33,9 @@ describe("Form", () => {
     });
 
     it('Find accessible elements by role', () => {
-      const h1 = screen.getByRole('heading');
-      expect(h1).toBeInTheDocument();
-      expect(h1).toHaveTextContent(/Sign up form/);
+      const h2 = screen.getByRole('heading');
+      expect(h2).toBeInTheDocument();
+      expect(h2).toHaveTextContent(/Sign up form/);
 
       expect(screen.getByRole('button')).toBeInTheDocument();
     });
@@ -50,19 +50,18 @@ describe("Form", () => {
   });
 });
 
-// describe("Form #2", () => {
+describe("Form #2", () => {
 
-//   it("Test ", () => {
-//     render(<Form />);
+  it("Test click event", () => {
+    render(<Form />);
 
-//     // screen.debug();
+    // screen.debug();
 
-//     const submit = screen.getByRole('button')
+    const submit = screen.getByRole('button')
 
-//     fireEvent.click(submit);
+    fireEvent.click(submit);
 
-//     // expect(await screen.findByTestId(("form.result"), {}, { timeout: 2100 })).toBeInTheDocument();
-//     expect(screen.getByTestId(("form.result"))).toBeInTheDocument();
-//     // screen.debug();
-//   });
-// });
+    expect(screen.getByTestId(("form.result"))).toBeInTheDocument();
+    // screen.debug();
+  });
+});
