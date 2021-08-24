@@ -1,6 +1,11 @@
 # React testing examples
 
-Some examples of testing in react
+
+## Take a look at [my presentation](https://docs.google.com/presentation/d/1erV9DoknOO3yk0kk3uY1k_f_S2JDEGCqcV8YWkwY7ME/edit?usp=sharing) about Unit Testing in React
+This repo contains the examples that go along with the slides.
+
+
+--
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
